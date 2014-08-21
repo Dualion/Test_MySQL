@@ -1,0 +1,79 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="test.mysql.SoftMySQL">
+
+    <Spinner
+        android:id="@+id/lsCatalogos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@+id/btCatalogos"
+        android:spinnerMode="dialog" />
+
+    <requestFocus />
+
+    <EditText
+        android:id="@+id/txtSQL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/lsCatalogos"
+        android:ems="10"
+        android:hint="@string/text_SQL_Ejecutar"
+        android:inputType="textMultiLine" >
+
+    </EditText>
+
+    <EditText
+        android:id="@+id/txtResultadoSQL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/btEjecutar"
+        android:ems="10"
+        android:inputType="textMultiLine|none" />
+
+    <Button
+        android:id="@+id/btCatalogos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/lsCatalogos"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/text_catalogos" />
+
+    <Button
+        android:id="@+id/btEjecutar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/txtSQL"
+        android:text="@string/text_ejecutar" />
+
+    <CheckBox
+        android:id="@+id/opConsultaModificacion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btEjecutar"
+        android:layout_alignBottom="@+id/btEjecutar"
+        android:layout_alignParentLeft="true"
+        android:text="@string/text_consulta_seleccion" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/txtResultadoSQL"
+        android:text="@string/text_aviso_SQL" />
+
+
+</RelativeLayout>

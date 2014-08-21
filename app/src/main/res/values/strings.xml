@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="title_activity_soft_my_sql">Acceso MySQL</string>
+    <string name="app_name">Acceso MySQL</string>
+    <string name="text_menu_configuracion">Configuración</string>
+    <string name="text_titulo_activity_principal">Acceso MySQL</string>
+    <string name="text_sql">Consulta SQL a ejecutar</string>
+    <string name="text_ejecutar">Ejecutar</string>
+    <string name="text_resultado_sql">Resultado SQL</string>
+    <string name="text_acercade">Acerca de &#8230;</string>
+    <string name="title_activity_activity__configuracion">Configuración</string>
+    <string name="text_IP">IP/Nombre red servidor</string>
+    <string name="text_Puerto">Puerto</string>
+    <string name="text_Usuario">Usuario</string>
+    <string name="text_Contraseña">Contraseña</string>
+    <string name="text_BD">Base de datos</string>
+    <string name="text_menu_acerca_de">Acerca de</string>
+    <string name="text_menu_guardar_configuracion">Guardar configuración</string>
+    <string name="text_catalogo_bd">Catálogo/BD</string>
+    <string name="text_probar_conexion">Probar conexión</string>
+    <string name="text_catalogos">Catálogos</string>
+    <string name="text_consulta_seleccion">SQL de modificación</string>
+	<string name="text_aviso_SQL">Utiliza LIMIT en las consultas SQL de selección,
+        si devuelven muchos registros podrían provocar que la
+	    aplicación se ralentice en exceso o incluso deje de funcionar.
+	    Por ejemplo: \nselect * from factura limit 0,10 \n(mostrará los 10
+	    primeros registros)"</string>
+    <string name="text_SQL_Ejecutar">Introduzca consulta SQL</string>
+
+</resources>

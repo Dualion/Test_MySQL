@@ -1,0 +1,13 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="test.mysql.SoftMySQL" >
+
+    <item android:id="@+id/menu_configuracion"
+        android:title="@string/text_menu_configuracion"
+        android:orderInCategory="100"/>
+
+    <item android:id="@+id/menu_acerca_de"
+        android:title="@string/text_menu_acerca_de">
+    </item>
+
+</menu>
