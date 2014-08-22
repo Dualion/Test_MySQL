@@ -45,10 +45,8 @@ public class SoftMySQL extends Activity {
                 Statement st = conexionMySQL.createStatement();
                 ResultSet rs = st.executeQuery(SQLEjecutar);
 
-                Integer numColumnas;
-
                 //número de columnas (campos) de la consula SQL
-                numColumnas = rs.getMetaData().getColumnCount();
+                Integer numColumnas = rs.getMetaData().getColumnCount();
 
                 //obtenemos el título de las columnas
                 for (int i = 1; i <= numColumnas; i++) {
@@ -101,9 +99,8 @@ public class SoftMySQL extends Activity {
             // consulta SQL de modificación de
             // datos (CREATE, DROP, INSERT, UPDATE)
             else {
-                int numAfectados;
                 Statement st = conexionMySQL.createStatement();
-                numAfectados = st.executeUpdate(SQLEjecutar);
+                int numAfectados = st.executeUpdate(SQLEjecutar);
                 resultadoSQL = "Registros afectados: " + String.valueOf(numAfectados);
                 st.close();
             }
