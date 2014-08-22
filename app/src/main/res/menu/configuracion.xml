@@ -1,0 +1,14 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="test.mysql.configuracion">
+
+    <item
+        android:id="@+id/menu_guardar_configuracion"
+        android:orderInCategory="100"
+        android:title="@string/text_menu_guardar_configuracion" />
+
+    <item
+        android:id="@+id/menu_acerca_de"
+        android:title="@string/text_acercade" />
+
+</menu>
