@@ -3,12 +3,14 @@ package test.mysql;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -121,33 +123,38 @@ public class SoftMySQL extends Activity {
         chbSQLModificacion = (CheckBox) findViewById(R.id.opConsultaModificacion);
 
         //Botón para mostrar lista de catálogos (bases de datos) de MySQL
-        buttonCatalogos.setOnClickListener((v) -> {
-            obtenerListaCatalogos();
-            try {
-                ArrayAdapter<String> adaptador =
-                        new ArrayAdapter<String>(SoftMySQL.this,
-                                android.R.layout.simple_list_item_1, listaCatalogos);
+        buttonCatalogos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                obtenerListaCatalogos();
+                try {
+                    ArrayAdapter<String> adaptador =
+                            new ArrayAdapter<String>(SoftMySQL.this,
+                                    android.R.layout.simple_list_item_1, listaCatalogos);
 
-                adaptador.setDropDownViewResource(
-                        android.R.layout.simple_spinner_dropdown_item);
-                spnCatalogos.setAdapter(adaptador);
-            } catch (Exception e) {
-                Toast.makeText(getApplicationContext(),
-                        "Error: " + e.getMessage(),
-                        Toast.LENGTH_SHORT).show();
+                    adaptador.setDropDownViewResource(
+                            android.R.layout.simple_spinner_dropdown_item);
+                    spnCatalogos.setAdapter(adaptador);
+                } catch (Exception e) {
+                    Toast.makeText(getApplicationContext(),
+                            "Error: " + e.getMessage(),
+                            Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
         //Botón para ejecutar consulta SQL en MySQL
-        buttonEjecutar.setOnClickListener((v) -> {
-            cargarConfiguracion();
-            SQLEjecutar = textSQL.getText().toString();
-            catalogoMySQL = spnCatalogos.getSelectedItem().toString();
-            conectarBDMySQL(usuarioMySQL, contrasenaMySQL,
-                    ipServidorMySQL, puertoMySQL, catalogoMySQL);
-            String resultadoSQL =
-                    ejecutarConsultaSQL(chbSQLModificacion.isChecked(), getApplication());
-            textResultadoSQL.setText(resultadoSQL);
+        buttonEjecutar.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                cargarConfiguracion();
+                SQLEjecutar = textSQL.getText().toString();
+                catalogoMySQL = spnCatalogos.getSelectedItem().toString();
+                conectarBDMySQL(usuarioMySQL, contrasenaMySQL,
+                        ipServidorMySQL, puertoMySQL, catalogoMySQL);
+                String resultadoSQL =
+                        ejecutarConsultaSQL(chbSQLModificacion.isChecked(), getApplication());
+                textResultadoSQL.setText(resultadoSQL);
+            }
         });
 
     }
@@ -244,7 +251,12 @@ public class SoftMySQL extends Activity {
             alertDialog.setTitle("Datos conexión MySQL");
             alertDialog.setIcon(android.R.drawable.ic_dialog_alert);
             alertDialog.setCancelable(false);
-            alertDialog.setPositiveButton("Aceptar", (dialog, which) -> menuConfiguracion());
+            alertDialog.setPositiveButton("Aceptar",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            menuConfiguracion();
+                        }
+                    });
             alertDialog.show();
         } else {
             String urlConexionMySQL;
@@ -258,7 +270,11 @@ public class SoftMySQL extends Activity {
                 try {
                     Class.forName("com.mysql.jdbc.Driver");
                     conexionMySQL = DriverManager.getConnection(urlConexionMySQL, usuario, contrasena);
-                } catch (ClassNotFoundException | SQLException e) {
+                } catch (ClassNotFoundException e) {
+                    Toast.makeText(getApplicationContext(),
+                            "Error: " + e.getMessage(),
+                            Toast.LENGTH_SHORT).show();
+                } catch (SQLException e) {
                     Toast.makeText(getApplicationContext(),
                             "Error: " + e.getMessage(),
                             Toast.LENGTH_SHORT).show();

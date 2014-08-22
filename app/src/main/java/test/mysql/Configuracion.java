@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.net.Uri;
 import android.content.Context;
 import android.content.Intent;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.content.SharedPreferences;
@@ -37,38 +38,32 @@ public class Configuracion extends Activity {
         buttonProbarConexion = (Button) findViewById(R.id.btProbarConexion);
 
         //Botón para ejecutar consulta SQL en MySQL
-        buttonProbarConexion.setOnClickListener((v) -> {
-            //Conectamos con el servidor de MySQL directamente
-            try {
-                String conexionMySQLURL = "jdbc:mysql://" +
-                        textIP.getText().toString() + ":" + textPuerto.getText().toString();
-                String usuario = textUsuario.getText().toString();
-                String contrasena = textContrasena.getText().toString();
+        buttonProbarConexion.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                //Conectamos con el servidor de MySQL directamente
+                try {
+                    String conexionMySQLURL = "jdbc:mysql://" +
+                            textIP.getText().toString() + ":" + textPuerto.getText().toString();
+                    String usuario = textUsuario.getText().toString();
+                    String contrasena = textContrasena.getText().toString();
 
-                makeText(getApplicationContext(),
-                        "Conectando a servidor MySQL",
-                        LENGTH_SHORT).show();
+                    makeText(getApplicationContext(),
+                            "Conectando a servidor MySQL",
+                            LENGTH_SHORT).show();
 
-                Class.forName("com.mysql.jdbc.Driver");
-                Connection con = DriverManager.getConnection(conexionMySQLURL,
-                        usuario, contrasena);
+                    Class.forName("com.mysql.jdbc.Driver");
+                    Connection con = DriverManager.getConnection(conexionMySQLURL,
+                            usuario, contrasena);
 
-                makeText(getApplicationContext(),
-                        "Conectado Servidor MySQL",
-                        LENGTH_LONG).show();
-                con.close();
-            } catch (ClassNotFoundException e) {
-                makeText(getApplicationContext(),
-                        "Error: " + e.getMessage(),
-                        LENGTH_SHORT).show();
-            } catch (SQLException e) {
-                makeText(getApplicationContext(),
-                        "Error: " + e.getMessage(),
-                        LENGTH_SHORT).show();
-            } catch (Exception e) {
-                makeText(getApplicationContext(),
-                        "Error: " + e.getMessage(),
-                        LENGTH_LONG).show();
+                    makeText(getApplicationContext(),
+                            "Conectado Servidor MySQL",
+                            LENGTH_LONG).show();
+                    con.close();
+                } catch (Exception e) {
+                    makeText(getApplicationContext(),
+                            "Error: " + e.getMessage(),
+                            LENGTH_LONG).show();
+                }
             }
         });
     }
