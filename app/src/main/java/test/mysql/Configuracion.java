@@ -52,6 +52,7 @@ public class Configuracion extends Activity {
                             LENGTH_SHORT).show();
 
                     Class.forName("com.mysql.jdbc.Driver");
+
                     Connection con = DriverManager.getConnection(conexionMySQLURL,
                             usuario, contrasena);
 
@@ -59,9 +60,13 @@ public class Configuracion extends Activity {
                             "Conectado Servidor MySQL",
                             LENGTH_LONG).show();
                     con.close();
-                } catch (Exception e) {
+                } catch (SQLException e) {
                     makeText(getApplicationContext(),
-                            "Error: " + e.getMessage(),
+                            "No se puede conectar. Error: " + e.getMessage(),
+                            LENGTH_LONG).show();
+                } catch (ClassNotFoundException e) {
+                    makeText(getApplicationContext(),
+                            "No se encuentra la clase. Error: " + e.getMessage(),
                             LENGTH_LONG).show();
                 }
             }
