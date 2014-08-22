@@ -1,5 +1,35 @@
-.gradle
-/local.properties
-/.idea/workspace.xml
+# Mac .DS_Store files
 .DS_Store
-/build
+
+# Built application files
+*.apk
+*.ap_
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+# Java class files
+*.class
+
+# generated files
+bin/
+gen/
+out/
+
+# Log Files
+*.log
+
+# files for the dex VM
+*.dex
+
+# Windows thumbnail db
+Thumbs.db
+
+# Android Studio
+.idea/
+#.idea/workspace.xml - remove # and delete .idea if it better suit your needs.
+.gradle/
+build/
+/*.iml
+
+
