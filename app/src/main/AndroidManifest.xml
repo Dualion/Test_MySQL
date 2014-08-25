@@ -11,7 +11,12 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".SoftMySQL"
-            android:label="@string/title_activity_soft_my_sql" />
+            android:label="@string/title_activity_soft_my_sql">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".Configuracion"
             android:label="@string/title_activity_configuracion" />

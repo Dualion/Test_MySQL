@@ -1,6 +1,7 @@
 package test.mysql;
 
 import android.app.Activity;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -40,6 +41,7 @@ public class Configuracion extends Activity {
         //Botón para ejecutar consulta SQL en MySQL
         buttonProbarConexion.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+
                 //Conectamos con el servidor de MySQL directamente
                 try {
                     String conexionMySQLURL = "jdbc:mysql://" +
@@ -53,8 +55,7 @@ public class Configuracion extends Activity {
 
                     Class.forName("com.mysql.jdbc.Driver");
 
-                    Connection con = DriverManager.getConnection(conexionMySQLURL,
-                            usuario, contrasena);
+                    Connection con = DriverManager.getConnection(conexionMySQLURL, usuario, contrasena);
 
                     makeText(getApplicationContext(),
                             "Conectado Servidor MySQL",
